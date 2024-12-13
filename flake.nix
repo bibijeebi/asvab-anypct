@@ -38,7 +38,13 @@
       sourcePreference = "wheel";
     };
 
-    pyprojectOverrides = _final: _prev: {
+    pyprojectOverrides = final: prev: {
+      asvab-anypct =
+        prev.asvab-anypct
+        or {}
+        // {
+          requires-python = ">=3.11";
+        };
     };
 
     pkgs = nixpkgs.legacyPackages.x86_64-linux;
