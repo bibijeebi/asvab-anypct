@@ -1,15 +1,21 @@
-[project]
-name = "asvab-anypct"
+[tool.poetry]
+name = "asvab-trainer"
 version = "0.1.0"
-description = "Add your description here"
-readme = "README.md"
-requires-python = ">=3.11"
-dependencies = [
-    "anthropic>=0.40.0",
-    "cyclopts>=3.1.2",
-    "sh>=2.1.0",
-    "tqdm>=4.67.1",
+description = "ASVAB vocabulary practice tool"
+authors = [
+    "bibijeebi <bennyforeman1@gmail.com>",
+    "EFJesus <haydensemail@domain.com",
 ]
 
-[project.scripts]
-asvab-anypct = "asvab_anypct.__main__:main"
+[tool.poetry.dependencies]
+python = "^3.11"
+textual = "^0.52.1"
+rich = "^13.7.0"
+cyclopts = "^3.1.2"
+
+[tool.poetry.scripts]
+asvab-anypct = "asvab_trainer.__main__:main"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
