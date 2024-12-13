@@ -11,5 +11,5 @@ dependencies = [
     "tqdm>=4.67.1",
 ]
 
-[tool.scripts]
+[project.scripts]
 asvab-anypct = "asvab_anypct.__main__:main"
