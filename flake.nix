@@ -77,6 +77,7 @@
         packages = [
           python
           pkgs.uv
+          pkgs.gum
         ];
         shellHook = ''
           unset PYTHONPATH

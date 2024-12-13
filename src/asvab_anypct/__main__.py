@@ -2,12 +2,17 @@
 
 from typing_extensions import Literal
 from cyclopts import App
-from sh import gum
+from sh import gum  # type: ignore
 
 app = App()
 
-difficulty_choices = Literal["easy", "medium", "hard"]
-topic_choices = Literal["math", "vocab"]
+# Define choices as tuples first
+DIFFICULTY_OPTIONS = ("easy", "medium", "hard")
+TOPIC_OPTIONS = ("math", "vocab")
+
+# Use the tuples in type hints
+DifficultyType = Literal[DIFFICULTY_OPTIONS[0], DIFFICULTY_OPTIONS[1], DIFFICULTY_OPTIONS[2]]
+TopicType = Literal[TOPIC_OPTIONS[0], TOPIC_OPTIONS[1]]
 
 easy_question_count = 10
 medium_question_count = easy_question_count * 2
@@ -15,19 +20,15 @@ hard_question_count = medium_question_count * 2
 
 @app.default
 def main(
-    difficulty: difficulty_choices | None = None,
-    topic: Literal["math", "vocab"] | None = None,
+    difficulty: DifficultyType | None = None,
+    topic: TopicType | None = None,
     num_questions: int | None = None,
 ):
     if difficulty is None:
-        # print("Choose difficulty: easy, medium, hard")
-        # difficulty = input("> ")
-        difficulty = gum.choose(list(difficulty_choices.__args__))
+        difficulty = gum.choose(list(DIFFICULTY_OPTIONS))
 
     if topic is None:
-        # print("Choose topic: math, vocab")
-        # topic = input("> ")
-        topic = gum.choose(list(topic_choices.__args__))
+        topic = gum.choose(list(TOPIC_OPTIONS))
     
     if num_questions is None:
         num_questions = gum.choose(list(range(1, 101)))
