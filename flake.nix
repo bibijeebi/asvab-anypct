@@ -67,11 +67,6 @@
         asvab_anypct.__main__.main()
     '';
 
-    apps.x86_64-linux.asvab-anypct = {
-      type = "app";
-      program = "${packages.x86_64-linux.default}/bin/asvab-anypct";
-    };
-
     devShells.x86_64-linux = {
       impure = pkgs.mkShell {
         packages = [

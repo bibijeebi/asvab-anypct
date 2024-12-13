@@ -10,9 +10,9 @@ app = App()
 DIFFICULTY_OPTIONS = ("easy", "medium", "hard")
 TOPIC_OPTIONS = ("math", "vocab")
 
-# Use the tuples in type hints
-DifficultyType = Literal[DIFFICULTY_OPTIONS[0], DIFFICULTY_OPTIONS[1], DIFFICULTY_OPTIONS[2]]
-TopicType = Literal[TOPIC_OPTIONS[0], TOPIC_OPTIONS[1]]
+# Use direct string literals for types
+DifficultyType = Literal["easy", "medium", "hard"]
+TopicType = Literal["math", "vocab"]
 
 easy_question_count = 10
 medium_question_count = easy_question_count * 2
